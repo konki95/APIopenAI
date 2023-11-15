@@ -1,0 +1,503 @@
+openapi: 3.0.3
+info:
+  title: OpenAI API
+  description: >-
+    The OpenAI REST API. Please see
+    https://platform.openai.com/docs/api-reference for more details.
+
+
+    Contact Support:
+     Name: OpenAI Support
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.openai.com/v1
+paths:
+  /chat/completions:
+    post:
+      tags:
+        - chat
+        - completions
+      summary: Creates a model response for the given chat conversation.
+      description: Creates a model response for the given chat conversation.
+      operationId: createsAModelResponseForTheGivenChatConversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                frequency_penalty:
+                  type: number
+                  example: 0
+                function_call:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      example: >
+                        Deprecated in favor of `tool_choice`.
+
+
+                        Controls which (if any) function is called by the model.
+
+                        `none` means the model will not call a function and
+                        instead generates a message.
+
+                        `auto` means the model can pick between generating a
+                        message or calling a function.
+
+                        Specifying a particular function via `{"name":
+                        "my_function"}` forces the model to call that function.
+
+
+                        `none` is the default when no functions are present.
+                        `auto`` is the default if functions are present.
+                    x-deprecated:
+                      type: boolean
+                      example: true
+                    x-oaiExpandable:
+                      type: boolean
+                      example: true
+                functions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                        example: <string>
+                      name:
+                        type: string
+                        example: <string>
+                      parameters:
+                        type: object
+                        properties:
+                          adipisicing1f:
+                            type: number
+                            example: 99298279
+                          irure276:
+                            type: number
+                            example: -1358586.6950204074
+                          proident3df:
+                            type: boolean
+                            example: true
+                          quis092:
+                            type: string
+                            example: officia incididunt veniam ullamco
+                  example:
+                    - description: <string>
+                      name: <string>
+                      parameters:
+                        adipisicing1f: 99298279
+                        irure276: -1358586.6950204074
+                        proident3df: true
+                        quis092: officia incididunt veniam ullamco
+                logit_bias:
+                  nullable: true
+                  example: null
+                max_tokens:
+                  type: string
+                  example: inf
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      x-oaiExpandable:
+                        type: boolean
+                        example: true
+                  example:
+                    - x-oaiExpandable: true
+                model:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      example: >-
+                        ID of the model to use. See the [model endpoint
+                        compatibility](/docs/models/model-endpoint-compatibility)
+                        table for details on which models work with the Chat
+                        API.
+                    example:
+                      type: string
+                      example: gpt-3.5-turbo
+                    x-oaiTypeLabel:
+                      type: string
+                      example: string
+                'n':
+                  type: number
+                  example: 1
+                presence_penalty:
+                  type: number
+                  example: 0
+                response_format:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      example: text
+                seed:
+                  type: string
+                  example: <integer>
+                stop:
+                  nullable: true
+                  example: null
+                stream:
+                  type: boolean
+                  example: false
+                temperature:
+                  type: number
+                  example: 1
+                tool_choice:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      example: >
+                        Controls which (if any) function is called by the model.
+
+                        `none` means the model will not call a function and
+                        instead generates a message.
+
+                        `auto` means the model can pick between generating a
+                        message or calling a function.
+
+                        Specifying a particular function via `{"type:
+                        "function", "function": {"name": "my_function"}}` forces
+                        the model to call that function.
+
+
+                        `none` is the default when no functions are present.
+                        `auto` is the default if functions are present.
+                    x-oaiExpandable:
+                      type: boolean
+                      example: true
+                tools:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      function:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: <string>
+                          name:
+                            type: string
+                            example: <string>
+                          parameters:
+                            type: object
+                            properties:
+                              labore_9:
+                                type: boolean
+                                example: false
+                              officia_4:
+                                type: number
+                                example: -84117344
+                              proident_8:
+                                type: string
+                                example: non enim
+                              utf0d:
+                                type: number
+                                example: 87687883
+                      type:
+                        type: string
+                        example: function
+                  example:
+                    - function:
+                        description: <string>
+                        name: <string>
+                        parameters:
+                          labore_9: false
+                          officia_4: -84117344
+                          proident_8: non enim
+                      type: function
+                    - function:
+                        description: <string>
+                        name: <string>
+                        parameters:
+                          utf0d: 87687883
+                      type: function
+                top_p:
+                  type: number
+                  example: 1
+                user:
+                  type: string
+                  example: <string>
+            examples:
+              Creates a model response for the given chat conversation.:
+                value:
+                  frequency_penalty: 0
+                  function_call:
+                    description: >
+                      Deprecated in favor of `tool_choice`.
+
+
+                      Controls which (if any) function is called by the model.
+
+                      `none` means the model will not call a function and
+                      instead generates a message.
+
+                      `auto` means the model can pick between generating a
+                      message or calling a function.
+
+                      Specifying a particular function via `{"name":
+                      "my_function"}` forces the model to call that function.
+
+
+                      `none` is the default when no functions are present.
+                      `auto`` is the default if functions are present.
+                    x-deprecated: true
+                    x-oaiExpandable: true
+                  functions:
+                    - description: <string>
+                      name: <string>
+                      parameters:
+                        adipisicing1f: 99298279
+                        irure276: -1358586.6950204074
+                        proident3df: true
+                        quis092: officia incididunt veniam ullamco
+                  logit_bias: null
+                  max_tokens: inf
+                  messages:
+                    - x-oaiExpandable: true
+                  model:
+                    description: >-
+                      ID of the model to use. See the [model endpoint
+                      compatibility](/docs/models/model-endpoint-compatibility)
+                      table for details on which models work with the Chat API.
+                    example: gpt-3.5-turbo
+                    x-oaiTypeLabel: string
+                  'n': 1
+                  presence_penalty: 0
+                  response_format:
+                    type: text
+                  seed: <integer>
+                  stop: null
+                  stream: false
+                  temperature: 1
+                  tool_choice:
+                    description: >
+                      Controls which (if any) function is called by the model.
+
+                      `none` means the model will not call a function and
+                      instead generates a message.
+
+                      `auto` means the model can pick between generating a
+                      message or calling a function.
+
+                      Specifying a particular function via `{"type: "function",
+                      "function": {"name": "my_function"}}` forces the model to
+                      call that function.
+
+
+                      `none` is the default when no functions are present.
+                      `auto` is the default if functions are present.
+                    x-oaiExpandable: true
+                  tools:
+                    - function:
+                        description: <string>
+                        name: <string>
+                        parameters:
+                          labore_9: false
+                          officia_4: -84117344
+                          proident_8: non enim
+                      type: function
+                    - function:
+                        description: <string>
+                        name: <string>
+                        parameters:
+                          utf0d: 87687883
+                      type: function
+                  top_p: 1
+                  user: <string>
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        finish_reason:
+                          type: string
+                          example: stop
+                        index:
+                          type: string
+                          example: <integer>
+                        message:
+                          type: object
+                          properties:
+                            content:
+                              type: string
+                              example: <string>
+                            function_call:
+                              type: object
+                              properties:
+                                arguments:
+                                  type: string
+                                  example: <string>
+                                name:
+                                  type: string
+                                  example: <string>
+                            role:
+                              type: string
+                              example: assistant
+                            tool_calls:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  function:
+                                    type: object
+                                    properties:
+                                      arguments:
+                                        type: string
+                                        example: <string>
+                                      name:
+                                        type: string
+                                        example: <string>
+                                  id:
+                                    type: string
+                                    example: <string>
+                                  type:
+                                    type: string
+                                    example: function
+                              example:
+                                - function:
+                                    arguments: <string>
+                                    name: <string>
+                                  id: <string>
+                                  type: function
+                                - function:
+                                    arguments: <string>
+                                    name: <string>
+                                  id: <string>
+                                  type: function
+                    example:
+                      - finish_reason: stop
+                        index: <integer>
+                        message:
+                          content: <string>
+                          function_call:
+                            arguments: <string>
+                            name: <string>
+                          role: assistant
+                          tool_calls:
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                      - finish_reason: tool_calls
+                        index: <integer>
+                        message:
+                          content: <string>
+                          function_call:
+                            arguments: <string>
+                            name: <string>
+                          role: assistant
+                          tool_calls:
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                  created:
+                    type: string
+                    example: <integer>
+                  id:
+                    type: string
+                    example: <string>
+                  model:
+                    type: string
+                    example: <string>
+                  object:
+                    type: string
+                    example: chat.completion
+                  system_fingerprint:
+                    type: string
+                    example: <string>
+                  usage:
+                    type: object
+                    properties:
+                      completion_tokens:
+                        type: string
+                        example: <integer>
+                      prompt_tokens:
+                        type: string
+                        example: <integer>
+                      total_tokens:
+                        type: string
+                        example: <integer>
+              examples:
+                OK:
+                  value:
+                    choices:
+                      - finish_reason: stop
+                        index: <integer>
+                        message:
+                          content: <string>
+                          function_call:
+                            arguments: <string>
+                            name: <string>
+                          role: assistant
+                          tool_calls:
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                      - finish_reason: tool_calls
+                        index: <integer>
+                        message:
+                          content: <string>
+                          function_call:
+                            arguments: <string>
+                            name: <string>
+                          role: assistant
+                          tool_calls:
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                            - function:
+                                arguments: <string>
+                                name: <string>
+                              id: <string>
+                              type: function
+                    created: <integer>
+                    id: <string>
+                    model: <string>
+                    object: chat.completion
+                    system_fingerprint: <string>
+                    usage:
+                      completion_tokens: <integer>
+                      prompt_tokens: <integer>
+                      total_tokens: <integer>
+tags:
+  - name: chat
+  - name: completions
